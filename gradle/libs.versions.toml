@@ -5,6 +5,7 @@ core-ktx = "1.13.1"
 lifecycle-runtime-ktx = "2.8.6"
 activity-compose = "1.9.2"
 compose-bom = "2024.09.02"
+usbserialforandroidVersion = "3.8.0"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "core-ktx" }
@@ -15,6 +16,7 @@ androidx-ui = { group = "androidx.compose.ui", name = "ui" }
 androidx-ui-graphics = { group = "androidx.compose.ui", name = "ui-graphics" }
 androidx-ui-tooling-preview = { group = "androidx.compose.ui", name = "ui-tooling-preview" }
 androidx-material3 = { group = "androidx.compose.material3", name = "material3" }
+usbserialforandroid = { module = "com.github.mik3y:usb-serial-for-android", version.ref = "usbserialforandroidVersion" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

@@ -59,22 +59,17 @@ dependencies {
     implementation(libs.androidx.ui.graphics)
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.material3)
-    implementation ("com.github.mik3y:usb-serial-for-android:3.8.0")
-//    implementation("androidx.core:core-ktx:1.7.0")
-//    implementation("androidx.appcompat:appcompat:1.4.0")
+    implementation(libs.usbserialforandroid)
 }
 
 
 chaquopy {
-    version = "3.8" // or the desired Python version
+    version = "3.8"
 
     defaultConfig {
-//        pyc {
-//            src = false
-//        }
 
         pip {
-            install("/home/deck/Documents/Cynteract/pyserial/") // Replace with the actual path and filename
+            install("git+https://github.com/xCarlost/pyserial.git")
             install ("bitarray>=2.8.0")
             install("bitstring==3.1.6")
             install("esptool==4.7")
