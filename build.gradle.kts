@@ -2,7 +2,7 @@
 plugins {
     id("com.android.application") version "8.6.1" apply false
     id("org.jetbrains.kotlin.android") version "1.7.20" apply false
-    id("com.chaquo.python") version "15.0.1" apply false
+    alias(libs.plugins.android.library) apply false
 }
 
 tasks.register("clean", Delete::class) {

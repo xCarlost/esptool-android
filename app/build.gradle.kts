@@ -1,16 +1,15 @@
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
-    id("com.chaquo.python")
 }
 
 android {
-    namespace = "com.example.firmwareflasher"
+    namespace = "com.xcarlost.firmwareflasher"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "com.example.firmwareflasher"
-        minSdk = 33
+        applicationId = "com.xcarlost.firmwareflasher"
+        minSdk = 27
         targetSdk = 34
         versionCode = 1
         versionName = "1.0"
@@ -19,9 +18,6 @@ android {
             useSupportLibrary = true
         }
 
-        ndk {
-            abiFilters += listOf("armeabi-v7a","arm64-v8a","x86", "x86_64") // Specify ABIs
-        }
     }
 
     buildTypes {
@@ -46,8 +42,6 @@ android {
             excludes += "/META-INF/{AL2.0,LGPL2.1}"
         }
     }
-
-
 }
 
 dependencies {
@@ -60,22 +54,5 @@ dependencies {
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.material3)
     implementation(libs.usbserialforandroid)
+    implementation(project(":esptool-android"))
 }
-
-
-chaquopy {
-    version = "3.8"
-
-    defaultConfig {
-
-        pip {
-            install("git+https://github.com/xCarlost/pyserial.git")
-            install ("bitarray>=2.8.0")
-            install("bitstring==3.1.6")
-            install("esptool==4.7")
-        }
-    }
-    productFlavors { }
-    sourceSets { }
-}
-

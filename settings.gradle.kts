@@ -16,3 +16,4 @@ dependencyResolutionManagement {
 
 rootProject.name = "FirmwareFlasher"
 include(":app")
+include(":esptool-android")

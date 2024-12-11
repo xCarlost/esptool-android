@@ -1,4 +1,4 @@
-package com.example.firmwareflasher.ui.theme
+package com.xcarlost.firmwareflasher.ui.theme
 
 import androidx.compose.ui.graphics.Color
 
