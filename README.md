@@ -43,3 +43,4 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
 
 For any questions or issues, please open an issue on the repository.
 
+[![](https://jitpack.io/v/xCarlost/FirmwareFlasher.svg)](https://jitpack.io/#xCarlost/FirmwareFlasher)
