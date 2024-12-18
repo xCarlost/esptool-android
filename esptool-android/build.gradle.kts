@@ -2,7 +2,7 @@ plugins {
     id("com.chaquo.python") version "15.0.1"
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.android.library)
-    `maven-publish`
+    id("maven-publish")
 }
 
 android {
@@ -55,3 +55,12 @@ chaquopy {
     sourceSets { }
 }
 
+afterEvaluate {
+    publishing {
+        publications {
+            create<MavenPublication>("release") {
+                from(components["release"])
+            }
+        }
+    }
+}
