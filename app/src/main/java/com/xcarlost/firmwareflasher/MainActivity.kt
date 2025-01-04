@@ -27,7 +27,6 @@ import com.xcarlost.esptool_android.Main
 import com.xcarlost.firmwareflasher.ui.theme.FirmwareFlasherTheme
 import java.io.File
 
-
 class MainActivity : ComponentActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -43,66 +42,73 @@ class MainActivity : ComponentActivity() {
         }
     }
 
-
     @Composable
     fun MainScreen(modifier: Modifier = Modifier) {
         var uploadStatus by remember { mutableStateOf("Click the button to upload firmware.") }
 
         Column(
-            modifier = modifier.fillMaxSize(),
-            verticalArrangement = Arrangement.Center,
-            horizontalAlignment = Alignment.CenterHorizontally
+                modifier = modifier.fillMaxSize(),
+                verticalArrangement = Arrangement.Center,
+                horizontalAlignment = Alignment.CenterHorizontally
         ) {
             Greeting(name = "Android")
-            Grateing(name = "Android")
+            Grateing()
             Spacer(modifier = Modifier.height(16.dp))
-            UploadButton { status ->
-                uploadStatus = status
-            }
+            UploadButton { status -> uploadStatus = status }
             Spacer(modifier = Modifier.height(16.dp))
             Text(text = uploadStatus, modifier = Modifier.padding(16.dp))
+            Spacer(modifier = Modifier.height(16.dp))
         }
     }
 
     @Composable
     fun Greeting(name: String, modifier: Modifier = Modifier) {
-        Text(
-            text = "Hello $name!",
-            modifier = modifier
-        )
+        Text(text = "Hello $name!", modifier = modifier)
     }
 
     @Composable
-    fun Grateing(name: String) {
+    fun Grateing() {
         Text(text = "Press button:")
     }
 
     @Composable
     fun UploadButton(onUploadStatusChange: (String) -> Unit) {
         val context = LocalContext.current
-        Button(onClick = {
-            val firmwareData: ByteArray =
-                context.assets.open("ESP32S3-Firmware.bin").use { inputStream ->
-                    inputStream.readBytes()
+
+        Button(
+                onClick = {
+                    val firmwarePaths =
+                            mapOf(
+                                    "esp32s3" to "ESP32S3-Firmware.bin",
+                                    "esp32" to "ESP32-Firmware.bin"
+                            )
+
+                    val arguments =
+                            mapOf(
+                                    "esp32s3" to
+                                            "--chip esp32s3 --baud 460800 --before default_reset --after hard_reset --no-stub write_flash -z 0x10000",
+                                    "esp32" to
+                                            "--chip esp32 --baud 460800 --before default_reset --after hard_reset write_flash -z 0x10000"
+                            )
+                    val chip = "esp32s3" // or "esp32" depending on your requirement
+                    val firmwareFile = firmwarePaths[chip] ?: return@Button
+                    val firmwareData: ByteArray =
+                            context.assets.open(firmwareFile).use { inputStream ->
+                                inputStream.readBytes()
+                            }
+
+                    val firmwarePath = saveAsFile(firmwareData)
+                    val argument = arguments[chip] + " $firmwarePath"
+                    val result = Main().uploadFirmware(context, argument)
+                    onUploadStatusChange(result)
                 }
-
-
-            val firmwarePath = saveAsFile(firmwareData)
-            val arguments =
-                "--chip esp32s3 --baud 115200 --before default_reset --after hard_reset --no-stub write_flash -z 0x10000 $firmwarePath"
-            val result = Main().uploadFirmware(context, arguments)
-            onUploadStatusChange(result)
-        }) {
-            Text(text = "Upload Firmware")
-        }
+        ) { Text(text = "Upload Firmware") }
     }
 
     @Preview(showBackground = true)
     @Composable
     fun GreetingPreview() {
-        FirmwareFlasherTheme {
-            MainScreen()
-        }
+        FirmwareFlasherTheme { MainScreen() }
     }
 
     private fun saveAsFile(content: ByteArray): String {
@@ -112,5 +118,3 @@ class MainActivity : ComponentActivity() {
         return tempFile.absolutePath
     }
 }
-
-

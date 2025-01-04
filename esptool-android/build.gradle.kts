@@ -11,7 +11,6 @@ android {
 
     defaultConfig {
         minSdk = 27
-        targetSdk = 34
 
         ndk {
             abiFilters += listOf("armeabi-v7a", "arm64-v8a", "x86", "x86_64")
@@ -45,10 +44,10 @@ chaquopy {
     defaultConfig {
 
         pip {
-            install("git+https://github.com/xCarlost/pyserial.git")
+            install("git+https://github.com/xCarlost/pyserial.git@b6adda109d814499a65c671ff60a888d479f3a3d")
             install("bitarray>=2.8.0")
             install("bitstring==3.1.6")
-            install("esptool==4.7")
+            install("esptool==4.8.1")
         }
     }
     productFlavors { }
