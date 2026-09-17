@@ -6,12 +6,12 @@ plugins {
 
 android {
     namespace = "com.xcarlost.firmwareflasher"
-    compileSdk = 37
+    compileSdk = 36
 
     defaultConfig {
         applicationId = "com.xcarlost.firmwareflasher"
         minSdk = 26
-        targetSdk = 37
+        targetSdk = 36
         versionCode = 1
         versionName = "1.1"
         ndk {
