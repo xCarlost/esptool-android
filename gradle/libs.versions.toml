@@ -1,6 +1,6 @@
 [versions]
-agp = "8.5.2"
-kotlin = "1.7.20"
+agp = "9.0.0"
+kotlin = "2.2.10"
 core-ktx = "1.13.1"
 lifecycle-runtime-ktx = "2.8.6"
 activity-compose = "1.9.2"
@@ -28,5 +28,6 @@ material = { group = "com.google.android.material", name = "material", version.r
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
 kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
+compose-compiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
 android-library = { id = "com.android.library", version.ref = "agp" }
 

@@ -1,23 +1,26 @@
 plugins {
-    id("com.android.application")
-    id("org.jetbrains.kotlin.android")
+    alias(libs.plugins.android.application)
+    alias(libs.plugins.compose.compiler)
+    id("com.chaquo.python") version "17.0.0"
 }
 
 android {
     namespace = "com.xcarlost.firmwareflasher"
-    compileSdk = 34
+    compileSdk = 37
 
     defaultConfig {
         applicationId = "com.xcarlost.firmwareflasher"
         minSdk = 26
-        targetSdk = 34
+        targetSdk = 37
         versionCode = 1
-        versionName = "1.0"
+        versionName = "1.1"
+        ndk {
+            abiFilters += listOf("arm64-v8a", "x86_64")
+        }
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables {
             useSupportLibrary = true
         }
-
     }
 
     buildTypes {
@@ -30,10 +33,6 @@ android {
         }
     }
 
-    kotlinOptions {
-        jvmTarget = "1.8"
-        freeCompilerArgs += "-Xuse-ir"
-    }
     buildFeatures {
         compose = true
     }
@@ -42,6 +41,11 @@ android {
             excludes += "/META-INF/{AL2.0,LGPL2.1}"
         }
     }
+}
+
+// 3. Modern replacement for kotlinOptions
+kotlin {
+    jvmToolchain(8)
 }
 
 dependencies {
