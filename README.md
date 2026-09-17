@@ -30,7 +30,7 @@ To get started with this project, follow these steps:
 
 ## ESP32 Firmware Upload
 
-This software uses `esptool.py` to upload firmware onto ESP32. The app is programmed for an ESP32-S3. You can change the chip in `upload_firmware.py` and the firmware file in the `app/src/main/python` folder.
+This software uses esptool 5 to upload firmware onto ESP32 devices. The app is programmed for an ESP32-S3 by default, and the Android UI provides the chip and firmware selections.
 
 ## License
 
