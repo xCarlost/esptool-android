@@ -30,7 +30,8 @@ To get started with this project, follow these steps:
 
 ## ESP32 Firmware Upload
 
-This software uses esptool 5 to upload firmware onto ESP32 devices. The app is programmed for an ESP32-S3 by default, and the Android UI provides the chip and firmware selections.
+This application uses the native esptool to upload firmware onto ESP32 devices. The app allows users to select the target chip and firmware file directly from the device storage. It supports the ESP chips compatible with esptool version 4.8.1, with ESP32-S3 as the default selection. 
+(Note: This feature is in beta and has undergone limited testing!)
 
 ## License
 
