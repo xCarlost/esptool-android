@@ -41,7 +41,6 @@ There are alternative implementations using different programming languages and 
 - **[EspflashKotlin](https://github.com/loucass003/EspflashKotlin)**: A **Kotlin** implementation that uses jSerialComm for serial communication.
 - **[SlimeVR-Server](https://github.com/SlimeVR/SlimeVR-Server)**: A **Kotlin** implementation featuring firmware update handling. See the [FirmwareUpdateHandler](https://github.com/SlimeVR/SlimeVR-Server/blob/e2d7d354c6515aaa2a15f8bfe047ec31458ab651/server/core/src/main/java/dev/slimevr/firmware/FirmwareUpdateHandler.kt#L116) for reference on managing firmware updates.
 
-
 ## License
 
 This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for more details.
