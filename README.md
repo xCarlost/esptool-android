@@ -33,6 +33,15 @@ To get started with this project, follow these steps:
 This application uses the native esptool to upload firmware onto ESP32 devices. The app allows users to select the target chip and firmware file directly from the device storage. It supports the ESP chips compatible with esptool version 4.8.1, with ESP32-S3 as the default selection. 
 (Note: This feature is in beta and has undergone limited testing!)
 
+## Other Implementations for ESP Flashing
+
+There are alternative implementations using different programming languages and approaches:
+
+- **[BearConsole2](https://github.com/bdureau/BearConsole2)**: A **Java** implementation that uses Physicaloid for serial communication.
+- **[EspflashKotlin](https://github.com/loucass003/EspflashKotlin)**: A **Kotlin** implementation that uses jSerialComm for serial communication.
+- **[SlimeVR-Server](https://github.com/SlimeVR/SlimeVR-Server)**: A **Kotlin** implementation featuring firmware update handling. See the [FirmwareUpdateHandler](https://github.com/SlimeVR/SlimeVR-Server/blob/e2d7d354c6515aaa2a15f8bfe047ec31458ab651/server/core/src/main/java/dev/slimevr/firmware/FirmwareUpdateHandler.kt#L116) for reference on managing firmware updates.
+
+
 ## License
 
 This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for more details.
